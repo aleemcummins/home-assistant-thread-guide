@@ -325,6 +325,24 @@ You should see your Thread network with a **Border Router**.
 <img width="785" height="296" alt="thread-integration2" src="https://github.com/user-attachments/assets/90d8183e-8ac3-4882-b164-74cf2743ce00" />
 
 ---
+## Thread + Matter Network Topology
+
+Matter devices that use Thread communicate through a **Thread mesh network**.  
+The **OpenThread Border Router** connects this mesh to your main Home Assistant network.
+
+```mermaid
+flowchart TD
+
+    HA[Home Assistant Controller]
+
+    HA --> OTBR[OpenThread Border Router]
+
+    OTBR --> THREAD[Thread Mesh Network]
+
+    THREAD --> ROUTER[Thread Router Devices]
+
+    ROUTER --> MATTER[Matter Devices<br>Lights / Sensors / Switches]
+```
 
 # Step 6 — Install Matter
 
@@ -404,4 +422,10 @@ This architecture provides a **reliable and scalable smart home setup**.
 
 ---
 
-⭐ If this guide helped you, please consider **starring the repository**.
+## Support This Guide
+
+If this guide helped you:
+
+⭐ Star the repository  
+🔗 Share it with the Home Assistant community  
+🛠 Use the affiliate links above to support the project
