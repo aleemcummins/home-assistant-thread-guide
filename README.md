@@ -1,4 +1,4 @@
-⭐ If this guide helped you, consider starring the repository.
+⭐ If this guide helped you, consider **starring this repository**.
 
 ---
 
@@ -14,11 +14,275 @@ Hardware used in this guide:
 • **Sonoff ZBDongle-E (Thread radio)**  
 • **Sonoff ZBDongle-P (Zigbee coordinator)**  
 • **Raspberry Pi 4 running Home Assistant OS**
-## Thread Integration
-<img width="1197" height="289" alt="thread-integration" src="https://github.com/user-attachments/assets/236de0d5-d72e-4876-923d-5ad6436d819f" />
-<img width="785" height="296" alt="thread-integration2" src="https://github.com/user-attachments/assets/90d8183e-8ac3-4882-b164-74cf2743ce00" />
 
-## OpenThread Border Router Configuration
+---
+
+# Table of Contents
+
+1. Hardware Used  
+2. Recommended USB Layout  
+3. Flashing the ZBDongle-E with Thread Firmware  
+4. Installing OpenThread Border Router  
+5. Configuring the Thread Radio  
+6. Verifying the Thread Network  
+7. Installing Matter  
+8. Zigbee and Thread Mesh Networks  
+9. Final Architecture  
+
+---
+
+# Hardware Used
+
+## Thread Radio
+
+**SONOFF ZBDongle-E (Lite MG21)**
+
+If you need to purchase one, you can use my affiliate link:
+
+https://amzn.to/46KR1eh
+
+Note: The link above is an affiliate link. If you purchase through it, it may provide a small commission at no additional cost to you which helps the channel grow.
+
+---
+
+## Zigbee Coordinator
+
+For Zigbee devices I recommend using the **Sonoff Zigbee 3.0 USB Dongle Plus (ZBDongle-P)**.
+
+SONOFF Universal Zigbee 3.0 USB Dongle Plus Gateway with Antenna for Home Assistant, IoBroker and Zigbee2MQTT:
+
+https://amzn.to/47tOtS2
+
+Using **separate radios for Zigbee and Thread** provides much better reliability than running both protocols on the same device.
+
+---
+
+# Storage Recommendation (Important)
+
+If you are running Home Assistant on a Raspberry Pi, it is **strongly recommended** to use an SSD.
+
+Recommended minimum:
+
+256GB SSD
+
+The SSD should be connected to a **USB 3.0 port** to maximise performance.
+
+---
+
+# Recommended USB Layout
+
+When using multiple USB devices, it is best to separate **storage devices from radio devices**.
+
+Recommended layout:
+
+Raspberry Pi
+
+USB 3.0 port  
+└── SSD (Home Assistant storage)
+
+USB 2.0 port  
+└── Zigbee radio  
+     (ZBDongle-P)
+
+USB 2.0 port  
+└── Thread radio  
+     (ZBDongle-E)
+
+Why this matters:
+
+• USB 3 ports can introduce interference in the 2.4GHz spectrum  
+• Zigbee and Thread both operate on 2.4GHz  
+• USB 2 ports reduce this interference  
+
+---
+
+# Use USB Extension Cables
+
+Radio dongles should not be plugged directly into the Raspberry Pi.
+
+Use **short USB extension cables** to move the radio away from the board.
+
+Benefits:
+
+• Reduces RF interference  
+• Improves signal strength  
+• Prevents USB noise  
+
+Ensure cables are good quality.
+
+For SSD enclosures using a USB 3 port, ensure cables are **USB 3.0 certified** to avoid I/O errors or performance issues.
+
+---
+
+# Step 1 — Create a Home Assistant Backup
+
+Before flashing the dongle, create a **full Home Assistant backup**.
+
+This is particularly important if the **ZBDongle-E was previously used as a Zigbee coordinator**.
+
+Home Assistant → Settings → System → Backups
+
+---
+
+# Step 2 — Flash Thread Firmware
+
+The ZBDongle-E must be flashed with **OpenThread RCP firmware**.
+
+Important:
+
+Connect the dongle to a **separate computer** for flashing, not the Raspberry Pi running Home Assistant.
+
+When selecting firmware, ensure the description contains **Thread / OpenThread / RCP**.
+
+Example firmware description may include:
+
+OpenThread RCP firmware  
+Thread radio firmware  
+
+---
+
+## Windows Driver Note
+
+Sometimes Windows may not automatically detect the dongle correctly.
+
+If the device does not appear:
+
+• Install the Silicon Labs USB driver  
+• Reconnect the device  
+• Try another USB port  
+
+Updating drivers may not immediately show the device in Device Manager until the dongle is reinserted.
+
+---
+
+# Step 3 — Install OpenThread Border Router
+
+In Home Assistant:
+
+Settings → Add-ons → Add-on Store
+
+Install:
+
+**OpenThread Border Router**
+
+After installation, configure the device path to the **ZBDongle-E serial device**.
+
+---
+
+# Step 4 — Configure the Thread Radio
+
+Select the device corresponding to the **ZBDongle-E USB device**.
+
+Example:
+
+/dev/serial/by-id/usb-SONOFF_SONOFF_Dongle_Lite_MG21
+
+Typical configuration:
+
+Baudrate: **460800**
+
+Save configuration and start the add-on.
+
+---
+
+# OpenThread Border Router Configuration
 
 After installing the OpenThread Border Router add-on, configure it to use the ZBDongle-E device.
+
 <img width="1271" height="1457" alt="otbr-config" src="https://github.com/user-attachments/assets/739cdb99-c0bf-44eb-8ea0-be6c891ff60b" />
+
+---
+
+# Step 5 — Verify Thread Integration
+
+Once the OTBR add-on starts successfully:
+
+Settings → Devices & Services → Thread
+
+You should see your Thread network with a **Border Router**.
+
+## Thread Integration
+
+<img width="1197" height="289" alt="thread-integration" src="https://github.com/user-attachments/assets/236de0d5-d72e-4876-923d-5ad6436d819f" />
+
+<img width="785" height="296" alt="thread-integration2" src="https://github.com/user-attachments/assets/90d8183e-8ac3-4882-b164-74cf2743ce00" />
+
+---
+
+# Step 6 — Install Matter
+
+Next install the **Matter integration**.
+
+Settings → Devices & Services → Add Integration → Matter
+
+Matter allows devices to communicate using:
+
+• Thread  
+• WiFi  
+• Ethernet  
+
+---
+
+# Zigbee and Thread Mesh Networks
+
+Both Zigbee and Thread operate as **mesh networks**.
+
+This means devices can relay messages through other devices.
+
+---
+
+## Zigbee Mesh
+
+Zigbee networks extend when **mains-powered devices** act as routers.
+
+Examples:
+
+• smart plugs  
+• smart switches  
+• wired modules  
+• some smart bulbs  
+
+Battery devices such as sensors are **end devices** and do not extend the mesh.
+
+---
+
+## Thread Mesh
+
+Thread also uses a mesh architecture.
+
+Powered Thread devices automatically become **Thread routers**, extending the network.
+
+Battery devices act as **sleepy end devices** and connect through nearby routers.
+
+---
+
+# Example Architecture
+
+Home Assistant  
+        │  
+ ┌──────┴────────┐  
+ │               │  
+Zigbee        Thread  
+Network       Network  
+
+ZBDongle-P    ZBDongle-E  
+Coordinator   Thread Radio  
+
+---
+
+# Final Result
+
+Your Home Assistant installation now supports:
+
+• Zigbee devices  
+• Thread devices  
+• Matter devices  
+• WiFi devices  
+
+all managed through a single platform.
+
+This architecture provides a **reliable and scalable smart home setup**.
+
+---
+
+⭐ If this guide helped you, please consider **starring the repository**.
