@@ -1,4 +1,15 @@
-⭐ If this guide helped you, consider **starring this repository**.
+# Home Assistant Thread Setup Guide
+
+Using the **Sonoff ZBDongle-E** as a dedicated **Thread radio** in Home Assistant with **OpenThread RCP and Matter**.
+
+⭐ If this guide helped you, please consider **starring this repository**.
+
+---
+
+![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Compatible-blue)
+![Matter](https://img.shields.io/badge/Matter-Supported-green)
+![Thread](https://img.shields.io/badge/Thread-Network-orange)
+![Zigbee](https://img.shields.io/badge/Zigbee-Supported-yellow)
 
 ---
 
