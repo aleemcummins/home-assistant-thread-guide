@@ -73,26 +73,42 @@ The SSD should be connected to a **USB 3.0 port** to maximise performance.
 
 When using multiple USB devices, it is best to separate **storage devices from radio devices**.
 
-Recommended layout:
+This reduces potential **2.4 GHz interference** and improves the reliability of both Zigbee and Thread networks.
 
-Raspberry Pi
+## Recommended Layout
 
-USB 3.0 port  
-└── SSD (Home Assistant storage)
+```mermaid
+flowchart TD
 
-USB 2.0 port  
-└── Zigbee radio  
-     (ZBDongle-P)
+    PI[Raspberry Pi]
 
-USB 2.0 port  
-└── Thread radio  
-     (ZBDongle-E)
+    PI --> USB3[USB 3.0 Port]
+    USB3 --> SSD[SSD<br>Home Assistant Storage]
 
-Why this matters:
+    PI --> USB2A[USB 2.0 Port]
+    USB2A --> ZIG[ZBDongle-P<br>Zigbee Coordinator]
 
-• USB 3 ports can introduce interference in the 2.4GHz spectrum  
-• Zigbee and Thread both operate on 2.4GHz  
-• USB 2 ports reduce this interference  
+    PI --> USB2B[USB 2.0 Port]
+    USB2B --> THREAD[ZBDongle-E<br>Thread Radio]
+```
+
+## Why This Matters
+
+• USB 3 ports can introduce **electromagnetic interference in the 2.4 GHz spectrum**  
+• Both **Zigbee and Thread operate on 2.4 GHz**  
+• Placing radios on **USB 2 ports reduces interference and improves stability**
+
+## Best Practice
+
+Use **short USB extension cables** for radio dongles so they are not directly attached to the Raspberry Pi.
+
+Benefits:
+
+• Reduces RF interference  
+• Improves wireless signal strength  
+• Avoids USB electrical noise near the radios
+
+For SSD enclosures connected to USB 3 ports, ensure cables are **USB 3.0 certified** to avoid performance or I/O errors. 
 
 ---
 
