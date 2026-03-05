@@ -33,6 +33,11 @@ Hardware used in this guide:
 • **Sonoff ZBDongle-E (Thread radio)**  
 • **Sonoff ZBDongle-P (Zigbee coordinator)**  
 • **Raspberry Pi 4 running Home Assistant OS**
+Home Assistant
+     │
+ ┌───┴────┐
+ │        │
+Zigbee   Thread
 ---
 
 # Smart Home Protocol Stack
