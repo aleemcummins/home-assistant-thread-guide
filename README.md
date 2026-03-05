@@ -16,3 +16,4 @@ Hardware used in this guide:
 • **Raspberry Pi 4 running Home Assistant OS**
 ## Thread Integration
 <img width="1197" height="289" alt="thread-integration" src="https://github.com/user-attachments/assets/236de0d5-d72e-4876-923d-5ad6436d819f" />
+<img width="785" height="296" alt="thread-integration2" src="https://github.com/user-attachments/assets/90d8183e-8ac3-4882-b164-74cf2743ce00" />
