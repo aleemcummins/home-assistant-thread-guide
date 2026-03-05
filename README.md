@@ -195,25 +195,23 @@ flowchart TD
     USB2B --> THREAD[Sonoff ZBDongle-E<br>Thread Radio]
 ```
 
-## Why This Matters
+### Why This Layout Is Recommended
 
-• USB 3 ports can introduce **electromagnetic interference in the 2.4 GHz spectrum**  
-• Both **Zigbee and Thread operate on 2.4 GHz**  
-• Placing radios on **USB 2 ports reduces interference and improves stability**
+• **USB 3 ports can introduce electromagnetic interference in the 2.4 GHz spectrum**  
+• Both **Zigbee and Thread operate on 2.4 GHz radio frequencies**  
+• Using **USB 2 ports for radio dongles reduces interference and improves stability**
 
-## Best Practice
+### Best Practice
 
-Use **short USB extension cables** for radio dongles so they are not directly attached to the Raspberry Pi.
+Use **short USB extension cables** for radio dongles rather than plugging them directly into the Raspberry Pi.
 
-Benefits:
+Benefits include:
 
-• Reduces RF interference  
-• Improves wireless signal strength  
-• Avoids USB electrical noise near the radios
+• reduced RF interference  
+• improved signal strength  
+• less electrical noise from the host device
 
-For SSD enclosures connected to USB 3 ports, ensure cables are **USB 3.0 certified** to avoid performance or I/O errors. 
-
----
+For SSD enclosures connected to USB 3 ports, ensure cables are **USB 3.0 certified** to avoid performance or I/O errors.
 
 # Use USB Extension Cables
 
