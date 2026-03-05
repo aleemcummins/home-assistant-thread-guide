@@ -14,7 +14,72 @@ Hardware used in this guide:
 • **Sonoff ZBDongle-E (Thread radio)**  
 • **Sonoff ZBDongle-P (Zigbee coordinator)**  
 • **Raspberry Pi 4 running Home Assistant OS**
+---
 
+# Smart Home Protocol Stack
+
+Modern Home Assistant installations often support multiple smart home protocols simultaneously.
+
+The architecture below shows how **Zigbee, Thread, Matter, and Wi-Fi devices connect through Home Assistant**.
+
+```mermaid
+flowchart TD
+
+    HA[Home Assistant Controller]
+
+    HA --> ZIG[Zigbee Mesh Network]
+    HA --> THREAD[Thread Mesh Network]
+    HA --> WIFI[WiFi Devices]
+
+    ZIG --> ZBDP[Sonoff ZBDongle-P<br>Zigbee Coordinator]
+    THREAD --> ZBDE[Sonoff ZBDongle-E<br>Thread Radio]
+
+    ZIG --> ZDEV[Zigbee Devices<br>Sensors / Switches / Plugs]
+    THREAD --> MDEV[Matter Devices<br>over Thread]
+
+    WIFI --> WDEV[WiFi Smart Devices]
+```
+
+---
+
+## How These Technologies Work Together
+
+**Zigbee**
+
+A low-power 2.4GHz mesh network used by many smart home sensors and switches.  
+Requires a **Zigbee coordinator**, such as the **ZBDongle-P**.
+
+**Thread**
+
+A modern IPv6-based mesh network used by many **Matter devices**.  
+Requires a **Thread radio** and **OpenThread Border Router**.
+
+**Matter**
+
+A smart home interoperability standard that allows devices from different manufacturers to work together.
+
+Matter devices may communicate over:
+
+• Thread  
+• WiFi  
+• Ethernet
+
+**WiFi Devices**
+
+Many smart home devices connect directly to the network using WiFi and integrate directly with Home Assistant.
+
+---
+
+## Why This Architecture Works Well
+
+Using **dedicated radios for Zigbee and Thread** provides:
+
+• better stability  
+• better wireless performance  
+• easier troubleshooting  
+• future-proof smart home infrastructure
+
+Home Assistant then acts as the **central controller** for all devices.
 ---
 
 # Table of Contents
