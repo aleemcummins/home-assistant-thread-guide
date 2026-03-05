@@ -258,17 +258,17 @@ Battery devices act as **sleepy end devices** and connect through nearby routers
 
 # Example Architecture
 
-Home Assistant  
-        │  
- ┌──────┴────────┐  
- │               │  
-Zigbee        Thread  
-Network       Network  
+```
+Home Assistant
+      │
+ ┌────┴─────┐
+ │          │
+Zigbee    Thread
+Network   Network
 
-ZBDongle-P    ZBDongle-E  
-Coordinator   Thread Radio  
-
----
+ZBDongle-P   ZBDongle-E
+Coordinator  Thread Radio
+```
 
 # Final Result
 
