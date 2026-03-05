@@ -14,3 +14,4 @@ Hardware used in this guide:
 • **Sonoff ZBDongle-E (Thread radio)**  
 • **Sonoff ZBDongle-P (Zigbee coordinator)**  
 • **Raspberry Pi 4 running Home Assistant OS**
+<img width="1197" height="289" alt="thread-integration" src="https://github.com/user-attachments/assets/236de0d5-d72e-4876-923d-5ad6436d819f" />
