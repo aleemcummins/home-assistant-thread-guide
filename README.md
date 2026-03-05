@@ -10,7 +10,15 @@ Using the **Sonoff ZBDongle-E** as a dedicated **Thread radio** in Home Assistan
 ![Matter](https://img.shields.io/badge/Matter-Supported-green)
 ![Thread](https://img.shields.io/badge/Thread-Network-orange)
 ![Zigbee](https://img.shields.io/badge/Zigbee-Supported-yellow)
+## Quick Navigation
 
+- [Smart Home Protocol Stack](#smart-home-protocol-stack)
+- [Hardware Used](#hardware-used)
+- [Recommended USB Layout](#recommended-usb-layout)
+- [Flashing the ZBDongle-E](#step-2--flash-thread-firmware)
+- [OpenThread Border Router Setup](#step-3--install-openthread-border-router)
+- [Thread Integration](#step-5--verify-thread-integration)
+- [Matter Integration](#step-6--install-matter)
 ---
 
 # Home Assistant Thread Setup Guide
