@@ -17,3 +17,8 @@ Hardware used in this guide:
 ## Thread Integration
 <img width="1197" height="289" alt="thread-integration" src="https://github.com/user-attachments/assets/236de0d5-d72e-4876-923d-5ad6436d819f" />
 <img width="785" height="296" alt="thread-integration2" src="https://github.com/user-attachments/assets/90d8183e-8ac3-4882-b164-74cf2743ce00" />
+
+## OpenThread Border Router Configuration
+
+After installing the OpenThread Border Router add-on, configure it to use the ZBDongle-E device.
+<img width="1271" height="1457" alt="otbr-config" src="https://github.com/user-attachments/assets/739cdb99-c0bf-44eb-8ea0-be6c891ff60b" />
