@@ -256,18 +256,20 @@ Battery devices act as **sleepy end devices** and connect through nearby routers
 
 ---
 
-# Example Architecture
+## Example Architecture
 
-```
-Home Assistant
-      │
- ┌────┴─────┐
- │          │
-Zigbee    Thread
-Network   Network
+The recommended setup uses **separate radios for Zigbee and Thread** to maximise reliability and avoid protocol conflicts.
 
-ZBDongle-P   ZBDongle-E
-Coordinator  Thread Radio
+```mermaid
+flowchart TD
+
+    HA[Home Assistant]
+
+    HA --> ZIG[Zigbee Network]
+    HA --> THREAD[Thread Network]
+
+    ZIG --> ZBDP[ZBDongle-P<br>Coordinator]
+    THREAD --> ZBDE[ZBDongle-E<br>Thread Radio]
 ```
 
 # Final Result
