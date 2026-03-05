@@ -40,15 +40,17 @@ Hardware used in this guide:
 ```mermaid
 flowchart TD
 
-    HA[Home Assistant]
+    HA[Home Assistant Controller]
 
-    HA --> ZIG[Zigbee Network]
-    HA --> THREAD[Thread Network]
+    HA --> ZIG[Zigbee Mesh Network]
+    HA --> THREAD[Thread Mesh Network]
 
-    ZIG --> ZBDP[ZBDongle-P<br>Zigbee Coordinator]
-    THREAD --> ZBDE[ZBDongle-E<br>Thread Radio]
+    ZIG --> ZBDP[Sonoff ZBDongle-P<br>Zigbee Coordinator]
+    THREAD --> ZBDE[Sonoff ZBDongle-E<br>Thread Radio]
+
+    ZIG --> ZDEV[Zigbee Devices]
+    THREAD --> MDEV[Matter Devices]
 ```
----
 
 # Smart Home Protocol Stack
 
