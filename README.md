@@ -176,21 +176,23 @@ When using multiple USB devices, it is best to separate **storage devices from r
 
 This reduces potential **2.4 GHz interference** and improves the reliability of both Zigbee and Thread networks.
 
-## Recommended Layout
+## Recommended USB Layout
+
+To minimise radio interference and maximise performance, it is best to separate **storage devices from radio devices**.
 
 ```mermaid
 flowchart TD
 
-    PI[Raspberry Pi]
+    PI[Raspberry Pi 4]
 
     PI --> USB3[USB 3.0 Port]
-    USB3 --> SSD[SSD<br>Home Assistant Storage]
+    USB3 --> SSD[SSD Storage<br>Home Assistant OS]
 
     PI --> USB2A[USB 2.0 Port]
-    USB2A --> ZIG[ZBDongle-P<br>Zigbee Coordinator]
+    USB2A --> ZIG[Sonoff ZBDongle-P<br>Zigbee Coordinator]
 
     PI --> USB2B[USB 2.0 Port]
-    USB2B --> THREAD[ZBDongle-E<br>Thread Radio]
+    USB2B --> THREAD[Sonoff ZBDongle-E<br>Thread Radio]
 ```
 
 ## Why This Matters
