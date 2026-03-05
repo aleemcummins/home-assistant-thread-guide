@@ -1,4 +1,5 @@
 # Home Assistant Thread Setup Guide
+Guide for setting up **Matter over Thread in Home Assistant** using a **Sonoff ZBDongle-E Thread radio** and **OpenThread Border Router**, alongside a **Zigbee network using the ZBDongle-P**.
 
 Using the **Sonoff ZBDongle-E** as a dedicated **Thread radio** in Home Assistant with **OpenThread RCP and Matter**.
 
@@ -33,11 +34,20 @@ Hardware used in this guide:
 • **Sonoff ZBDongle-E (Thread radio)**  
 • **Sonoff ZBDongle-P (Zigbee coordinator)**  
 • **Raspberry Pi 4 running Home Assistant OS**
-Home Assistant
-     │
- ┌───┴────┐
- │        │
-Zigbee   Thread
+---
+## Architecture Overview
+
+```mermaid
+flowchart TD
+
+    HA[Home Assistant]
+
+    HA --> ZIG[Zigbee Network]
+    HA --> THREAD[Thread Network]
+
+    ZIG --> ZBDP[ZBDongle-P<br>Zigbee Coordinator]
+    THREAD --> ZBDE[ZBDongle-E<br>Thread Radio]
+```
 ---
 
 # Smart Home Protocol Stack
